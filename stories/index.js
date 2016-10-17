@@ -27,7 +27,7 @@ storiesOf('Form', module)
 		return (
 			<Form
 				schema={loginFormSchema}
-			    onSubmit={action('submit')}
+				onSubmit={action('submit')}
 			/>
 		);
 	});
