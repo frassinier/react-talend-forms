@@ -18,15 +18,26 @@ const CustomFieldTemplate = ({
 	hidden,
 	required,
 	displayLabel,
+	...rest
 }) => {
 	if (hidden) {
 		return children;
 	}
-
+	const uiWidget = rest.uiSchema && rest.uiSchema['ui:widget'];
+	const hasLabelBefore =
+		uiWidget === 'checkboxes' ||
+		uiWidget === 'checkbox' ||
+		uiWidget === 'radio' ||
+		uiWidget === 'range';
+	const isToggle =
+		uiWidget === 'toggle';
 	return (
 		<div className={classNames}>
+			{hasLabelBefore && !isToggle && displayLabel &&
+			<Label className="form-label" label={label} required={required} id={id}/>}
 			{children}
-			{displayLabel ? <Label label={label} required={required} id={id}/> : null}
+			{!hasLabelBefore && !isToggle && displayLabel &&
+			<Label label={label} required={required} id={id}/>}
 			{displayLabel && description ? description : null}
 			{errors}
 			{help}

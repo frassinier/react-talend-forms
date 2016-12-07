@@ -20,28 +20,66 @@
         padding-top: 1.5rem;
     }
 
-    form .form-group .form-control + label {
+    form .form-group .form-control ~ label {
         position: absolute;
         top: 1.5rem;
         font-size: 1.5rem;
         -webkit-transition: all 0.1s linear;
         transition: all 0.1s linear;
+        pointer-events: none;
     }
 
-    form .form-group .form-control:focus + label,
-    form .form-group .form-control[value]:not([value=""]) + label,
-    form .form-group .form-control:not(:empty) + label {
+    form .form-group .form-control:focus ~ label,
+    form .form-group .form-control[value]:not([value=""]) ~ label,
+    form .form-group .form-control:not(:empty) ~ label,
+    form .form-group input[type="date"] ~ label,
+    form .form-group input[type="datetime-local"] ~ label {
         top: 0;
         font-size: 1.125rem;
         opacity: 1 !important;
     }
 
-    form .form-group .form-control:focus + label {
+    form .form-group .form-control:focus ~ label {
         color: deeppink;
     }
 
-    form .form-group .form-control[placeholder]:not([placeholder=""]) + label {
-        pointer-events: none;
+    form .form-group .form-control[placeholder]:not([placeholder=""]) ~ label {
         opacity: 0;
+    }
+
+    .switch input[type="checkbox"] {
+        position: relative;
+        display: inline-block;
+        height: 15px;
+        width: 35px;
+        background: #BDBDBD;
+        border-radius: 100px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        transition: all 0.2s ease;
+    }
+
+    .switch input[type="checkbox"]:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 100px;
+        background: #F1F1F1;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+        transition: all 0.2s ease;
+    }
+    .switch input[type="checkbox"]:checked:before {
+        border: none;
+    }
+
+    .switch input[type="checkbox"]:checked:after {
+        -webkit-transform: translate(16px, 0);
+        transform: translate(16px, 0);
+    }
+
+    .switch input[type="checkbox"] + * {
+        margin-left: 10px;
     }
 </style>

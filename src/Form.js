@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
 
 import RJSForm from 'react-jsonschema-form/lib/index';
-import CheckboxWidget from 'react-jsonschema-form/lib/components/widgets/CheckboxWidget';
+
 import Button from 'react-bootstrap/lib/Button';
+
 import ObjectField from './fields/ObjectField';
 import StringField from './fields/StringField';
 import FieldTemplate from './templates/FieldTemplate';
+import SwitchWidget from './widgets/SwitchWidget';
 
 /**
  * @type {string} After trigger name for field value has changed
@@ -13,7 +15,7 @@ import FieldTemplate from './templates/FieldTemplate';
 const TRIGGER_AFTER = 'after';
 
 const customWidgets = {
-	toggle: CheckboxWidget,
+	toggle: SwitchWidget,
 };
 
 const customUiSchema = {
