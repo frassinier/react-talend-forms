@@ -1,12 +1,47 @@
 <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600">
 <style>
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
 
-.buttons {
-  margin-top: auto;
-}
+    .buttons {
+        margin-top: auto;
+    }
+
+    form {
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    form .form-group {
+        position: relative;
+        padding-top: 1.5rem;
+    }
+
+    form .form-group .form-control + label {
+        position: absolute;
+        top: 1.5rem;
+        font-size: 1.5rem;
+        -webkit-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+
+    form .form-group .form-control:focus + label,
+    form .form-group .form-control[value]:not([value=""]) + label,
+    form .form-group .form-control:not(:empty) + label {
+        top: 0;
+        font-size: 1.125rem;
+        opacity: 1 !important;
+    }
+
+    form .form-group .form-control:focus + label {
+        color: deeppink;
+    }
+
+    form .form-group .form-control[placeholder]:not([placeholder=""]) + label {
+        pointer-events: none;
+        opacity: 0;
+    }
 </style>

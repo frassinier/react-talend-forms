@@ -5,6 +5,7 @@ import CheckboxWidget from 'react-jsonschema-form/lib/components/widgets/Checkbo
 import Button from 'react-bootstrap/lib/Button';
 import ObjectField from './fields/ObjectField';
 import StringField from './fields/StringField';
+import FieldTemplate from './templates/FieldTemplate';
 
 /**
  * @type {string} After trigger name for field value has changed
@@ -92,6 +93,7 @@ class Form extends React.Component {
 				formData={formData}
 				formContext={customFormContext}
 				fields={customFields}
+				FieldTemplate={FieldTemplate}
 				widgets={customWidgets}
 				onChange={undefined}
 				onSubmit={this.handleSchemaSubmit}
