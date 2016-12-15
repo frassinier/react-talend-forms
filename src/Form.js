@@ -8,6 +8,7 @@ import ObjectField from './fields/ObjectField';
 import StringField from './fields/StringField';
 import FieldTemplate from './templates/FieldTemplate';
 import SwitchWidget from './widgets/SwitchWidget';
+import TabsField from './fields/TabsField';
 
 /**
  * @type {string} After trigger name for field value has changed
@@ -19,7 +20,7 @@ const customWidgets = {
 };
 
 const customUiSchema = {
-	'ui:widget': 'toggle',
+	'ui:widget': ['toggle'],
 };
 
 class Form extends React.Component {
@@ -67,6 +68,7 @@ class Form extends React.Component {
 		const formData = this.props.data && this.props.data.properties;
 
 		const customFields = {
+			TabsField,
 			ObjectField,
 			StringField,
 		};
@@ -108,23 +110,27 @@ class Form extends React.Component {
 	}
 }
 
+export const DataPropTypes = PropTypes.shape({
+	jsonSchema: PropTypes.object.isRequired,
+	uiSchema: PropTypes.object,
+	properties: PropTypes.object,
+});
+
+export const ActionsPropTypes = PropTypes.arrayOf(PropTypes.shape({
+	style: PropTypes.string,
+	type: PropTypes.oneOf(['submit', 'reset', 'button']),
+	onClick: PropTypes.func,
+	label: PropTypes.string,
+	icon: PropTypes.string,
+	title: PropTypes.string,
+}));
+
 Form.propTypes = {
-	data: PropTypes.shape({
-		jsonSchema: PropTypes.object.isRequired,
-		uiSchema: PropTypes.object,
-		properties: PropTypes.object,
-	}).isRequired,
-	theme: React.PropTypes.object,
-	onChange: React.PropTypes.func,
-	onSubmit: React.PropTypes.func,
-	actions: React.PropTypes.arrayOf(React.PropTypes.shape({
-		style: React.PropTypes.string,
-		type: React.PropTypes.oneOf(['submit', 'reset', 'button']),
-		onClick: React.PropTypes.func,
-		label: React.PropTypes.string,
-		icon: React.PropTypes.string,
-		title: React.PropTypes.string,
-	})),
+	data: DataPropTypes.isRequired,
+	theme: PropTypes.object,
+	onChange: PropTypes.func,
+	onSubmit: PropTypes.func,
+	actions: ActionsPropTypes,
 	buttonBlockClass: PropTypes.string,
 };
 
